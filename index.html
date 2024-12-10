@@ -84,7 +84,8 @@
 				<div class="col-md-6">
 					<div class="card cardsize" style="background-color: #8c52ff; color: white; border: none">
 						<div class="card-body">
-							<p class="card-tex font-weight-bold">JUPITER</p>
+							<span class="card-text font-weight-bold">JUPITER</span>
+							<p class="card-text">Leon Chacha</p>
 							<br />
 							<center>
 								<h1 class="member-names" id="team-0-member"></h1>
@@ -95,7 +96,8 @@
 				<div class="col-md-6">
 					<div class="card cardsize" style="background-color: #737373; color: white; border: none">
 						<div class="card-body">
-							<p class="card-text font-weight-bold">MERCURY</p>
+							<span class="card-text font-weight-bold">MERCURY</span>
+							<p class="card-text">Azam Bhai</p>
 							<br />
 							<center>
 								<h1 class="member-names" id="team-1-member"></h1>
@@ -108,7 +110,8 @@
 				<div class="col-md-6">
 					<div class="card cardsize" style="background-color: #ae3838; color: white; border: none">
 						<div class="card-body">
-							<p class="card-text font-weight-bold">MARS</p>
+							<span class="card-text font-weight-bold">MARS</span>
+							<p class="card-text">Radif Bhai</p>
 							<br />
 							<center>
 								<h1 class="member-names" id="team-2-member"></h1>
@@ -119,7 +122,8 @@
 				<div class="col-md-6">
 					<div class="card cardsize" style="background-color: #ffcc01; color: white; border: none">
 						<div class="card-body">
-							<p class="card-text font-weight-bold">VENUS</p>
+							<span class="card-text font-weight-bold">VENUS</span>
+							<p class="card-text">Atif Bhai</p>
 							<br />
 							<center>
 								<h1 class="member-names" id="team-3-member"></h1>
@@ -151,8 +155,10 @@
 					members = [
 						"Farzad vai",
 						"S.M.Mohiuddin Milton Vai",
-						"Md. Ali Azam Vai",
-						"Moshiur Rahman Vai",
+						// "Tasin Shafi Leon",
+						// "Md. Ali Azam Vai",
+						// "Moshiur Rahman Vai",
+						// "Atif Vai",
 						"Md. Tahmeed Abdullah Vai",
 						"Md. Mozammel Haque Vai",
 						"Md. Sazzad Hossain Naim",
@@ -173,7 +179,6 @@
 						"Farhan Abir",
 						"Seefat E Hasina Khan",
 						"Sayedur Rahman",
-						"Tasin Shafi Leon",
 						"Hasnain Ahamed Nisan",
 						"Al Islam",
 						"Saad Ibna Omar Sabit",
@@ -192,7 +197,6 @@
 						"Md. Zubair Islam",
 						"Mukit Mahdin",
 						"Sadi Vai",
-						"Atif Vai",
 						"Iman Hossain",
 						"Farha Kabir Oishee",
 						"Mohiuddin Tushar",
@@ -311,6 +315,7 @@
 				$("#export").click(function () {
 					let rows = [];
 					rows.push(["Jupiter", "Mercury", "Mars", "Venus"]);
+					rows.push(["Tasin Shafi Leon", "Md. Ali Azam Vai", "Moshiur Rahman Vai", "Atif Vai"]);
 					console.log(teams);
 
 					for (let team of teams) {

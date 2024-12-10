@@ -1,85 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bootstrap Cards</title>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+		<style>
+			.full-screen {
+				height: 100vh;
+			}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Cards</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .full-screen {
-            height: 100vh;
-        }
+			.cardsize {
+				height: 200px !important;
+			}
 
-        .cardsize {
-            height: 200px !important;
-        }
-    </style>
-</head>
+			/* HTML: <div class="loader"></div> */
+			.loader {
+				width: 40px;
+				aspect-ratio: 1;
+				--c: no-repeat linear-gradient(#000 0 0);
+				background: var(--c) 0 0, var(--c) 0 100%, var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 0,
+					var(--c) 100% 100%;
+				background-size: 8px 50%;
+				animation: l7-0 1s infinite;
+				position: relative;
+				overflow: hidden;
+			}
+			.loader:before {
+				content: "";
+				position: absolute;
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: #000;
+				top: calc(50% - 4px);
+				left: -8px;
+				animation: inherit;
+				animation-name: l7-1;
+			}
 
-<body>
-    <div class="container full-screen mt-2">
-        <center>
-            <h1>Team Selection</h1>
-        </center>
-        <div class="row m-5">
-            <div class="col-md-6">
-                <div class="card cardsize" style="background-color: #8C52FF; color: white; border: none;">
-                    <div class="card-body">
-                        <p class="card-tex font-weight-bold">JUPITER</p>
-                        <br>
-                        <center>
-                            <h1>Khandoker Kafi Anan</h1>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card cardsize" style="background-color: #737373; color:white; border: none;">
-                    <div class="card-body">
-                        <p class="card-text font-weight-bold">MERCURY</p>
-                        <br>
-                        <center>
-                            <h1>Khandoker Kafi Anan</h1>
-                        </center>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row m-5">
-            <div class="col-md-6">
-                <div class="card cardsize" style="background-color: #AE3838; color: white; border: none;">
-                    <div class="card-body">
-                        <p class="card-text font-weight-bold">MARS</p>
-                        <br>
-                        <center>
-                            <h1>Khandoker Kafi Anan</h1>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card cardsize" style="background-color: #FFCC01; color: white; border: none;">
-                    <div class="card-body">
-                        <p class="card-text font-weight-bold">VENUS</p>
-                        <br>
-                        <center>
-                            <h1>Khandoker Kafi Anan</h1>
-                        </center>
-                    </div>
-                </div>
-            </div>
-        </div>
+			@keyframes l7-0 {
+				16.67% {
+					background-size: 8px 30%, 8px 30%, 8px 50%, 8px 50%, 8px 50%, 8px 50%;
+				}
+				33.33% {
+					background-size: 8px 30%, 8px 30%, 8px 30%, 8px 30%, 8px 50%, 8px 50%;
+				}
+				50% {
+					background-size: 8px 30%, 8px 30%, 8px 30%, 8px 30%, 8px 30%, 8px 30%;
+				}
+				66.67% {
+					background-size: 8px 50%, 8px 50%, 8px 30%, 8px 30%, 8px 30%, 8px 30%;
+				}
+				83.33% {
+					background-size: 8px 50%, 8px 50%, 8px 50%, 8px 50%, 8px 30%, 8px 30%;
+				}
+			}
 
-        <center><button class="btn btn-primary btn-lg m-2">+ Add Team Members</button></center>
+			@keyframes l7-1 {
+				20% {
+					left: 0px;
+				}
+				40% {
+					left: calc(50% - 4px);
+				}
+				60% {
+					left: calc(100% - 8px);
+				}
+				80%,
+				100% {
+					left: 100%;
+				}
+			}
+		</style>
+	</head>
 
-        <center><button class="btn btn-secondary btn-lg">Export Teams</button></center>
-    </div>
+	<body>
+		<div class="container full-screen mt-2">
+			<center>
+				<h1>Team Selection</h1>
+			</center>
+			<div class="row m-5">
+				<div class="col-md-6">
+					<div class="card cardsize" style="background-color: #8c52ff; color: white; border: none">
+						<div class="card-body">
+							<p class="card-tex font-weight-bold">JUPITER</p>
+							<br />
+							<center>
+								<h1 class="member-names" id="team-0-member"></h1>
+							</center>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card cardsize" style="background-color: #737373; color: white; border: none">
+						<div class="card-body">
+							<p class="card-text font-weight-bold">MERCURY</p>
+							<br />
+							<center>
+								<h1 class="member-names" id="team-1-member"></h1>
+							</center>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row m-5">
+				<div class="col-md-6">
+					<div class="card cardsize" style="background-color: #ae3838; color: white; border: none">
+						<div class="card-body">
+							<p class="card-text font-weight-bold">MARS</p>
+							<br />
+							<center>
+								<h1 class="member-names" id="team-2-member"></h1>
+							</center>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card cardsize" style="background-color: #ffcc01; color: white; border: none">
+						<div class="card-body">
+							<p class="card-text font-weight-bold">VENUS</p>
+							<br />
+							<center>
+								<h1 class="member-names" id="team-3-member"></h1>
+							</center>
+						</div>
+					</div>
+				</div>
+			</div>
 
+			<center><button class="btn btn-primary btn-lg m-2" id="add">+ Add Team Members</button></center>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+			<center><button class="btn btn-secondary btn-lg" id="export">Export Teams</button></center>
 
+			<center><button class="btn btn-secondary btn-lg mt-2" id="reset">Reset</button></center>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript">
+			let disabled = false;
+			let members = localStorage.getItem("members") ? JSON.parse(localStorage.getItem("members")) : null;
+			let teams = localStorage.getItem("teams") ? JSON.parse(localStorage.getItem("teams")) : [];
+			console.log(members, teams);
+
+			const init = async () => {
+				if (members === null || members === undefined || members.length === 0) {
+					members = [
+						"Farzad vai",
+						"S.M.Mohiuddin Milton Vai",
+						"Md. Ali Azam Vai",
+						"Moshiur Rahman Vai",
+						"Md. Tahmeed Abdullah Vai",
+						"Md. Mozammel Haque Vai",
+						"Md. Sazzad Hossain Naim",
+						"Dipon Saha",
+						"Kazi Sumiya Islam ",
+						"Sharmin Shejoti",
+						"Md. Kaykuj Taky",
+						"Md. Affif Tanvir",
+						"Al Sahariar Ziddne ",
+						"Tarbi Binte Tofazzel",
+						"Tahmina Banu",
+						"Shakura Sultana",
+						"Md. Riazul Islam",
+						"Md. Sohel Rana",
+						"Shahanaj Begum",
+						"Md. Shanto Miah",
+						"Zihadul Islam Shakil",
+						"Farhan Abir",
+						"Seefat E Hasina Khan",
+						"Sayedur Rahman",
+						"Tasin Shafi Leon",
+						"Hasnain Ahamed Nisan",
+						"Al Islam",
+						"Saad Ibna Omar Sabit",
+						"Arijit Banarjee",
+						"Mahin Chowdhury",
+						"Khandoker Kafi Anan",
+						"Md. Kawsar Hossain",
+						"Ridwanul Hasan",
+						"Safaeid Hossain Arib",
+						"Anirudha Guha",
+						"Gazi Assadujjaman Mamun",
+						"Ishrak Kamal Al Muntaseer",
+						"Nurzihan Fatema Reya",
+						"Md Nafis Tihami",
+						"Zobaer Ibn Razzaque",
+						"Md. Zubair Islam",
+						"Mukit Mahdin",
+						"Sadi Vai",
+						"Atif Vai",
+						"Iman Hossain",
+						"Farha Kabir Oishee",
+						"Mohiuddin Tushar",
+						"Mahmudur Rahman",
+						"Tahlil Abrar ",
+						"Saiyara Mahjabin",
+						"Rafi Aman",
+						"Mohammed Hasan Siraj",
+						"Prosenjit Banik",
+						"Israt Dawood Khan",
+						"Mahmud Al Islam",
+						"Tanvir Mahmud ",
+						"Aysha Sobhan",
+						"Robiul",
+						"Farhan Muhib Dhruba",
+						"Sajal Akond",
+						"Mirza Farhan Hasin",
+						"Md. Koushik Ahmed ",
+						"Nazmus Sakib Rumman",
+						"Kuntal Saha",
+						"Siam Islam",
+						"Sadman",
+						"Habiba Akter Apu",
+						"Mikayel",
+						"Md. Muktadir Billah",
+						"Mahdi billah",
+						"Mashtura Treena",
+						"Mashrefa Tarannum",
+						"Noor Vai",
+						"Asim Vai",
+						"Shikha Aunty",
+						"Ramisha",
+						"Akib",
+						"Asif Vai",
+						"Munir Vai",
+						"Robi vai",
+						"Mahmuda Apu",
+						"Albab",
+						"Adiba",
+						"Razin",
+						"Koel Apu",
+						"Hridoy das",
+						"Zemmam",
+						"Fardin",
+					];
+
+					localStorage.setItem("members", JSON.stringify(members));
+					console.log(members);
+				}
+			};
+
+			init();
+
+			$(document).ready(function () {
+				$(".card").click(function () {
+					let name = $(this).children(".card-body").children(".card-text").text();
+					if (members.includes(name)) {
+						members.splice(members.indexOf(name), 1);
+					} else {
+						members.push(name);
+					}
+				});
+
+				$("#reset").click(function () {
+					members = [];
+					teams = [];
+					localStorage.removeItem("members");
+					localStorage.removeItem("teams");
+				});
+
+				$("#add").click(function () {
+					if (disabled) return;
+					disabled = true;
+
+					$(".member-names").html('<div class="loader"></div>');
+
+					let randomNumbers = [];
+					for (let i = 0; i < Math.min(members.length, 4); i++) {
+						let randomNumber = Math.floor(Math.random() * members.length);
+						while (randomNumbers.includes(randomNumber)) {
+							randomNumber = Math.floor(Math.random() * members.length);
+						}
+
+						randomNumbers.push(randomNumber);
+					}
+
+					// let j = 0;
+					let names = [];
+					for (let randomNumber of randomNumbers) {
+						let name = members[randomNumber];
+
+						// if (teams[j] == undefined) {
+						// 	teams[j] = [name];
+						// } else teams[j].push(name);
+						// j++;
+
+						names.push(name);
+					}
+
+					teams.push(names);
+
+					members = members.filter((item) => names.indexOf(item) === -1);
+
+					localStorage.setItem("members", JSON.stringify(members));
+					localStorage.setItem("teams", JSON.stringify(teams));
+
+					setTimeout(() => {
+						$(".member-names").html("");
+						names.map((name, index) => {
+							$("#team-" + index + "-member").text(name);
+						});
+						disabled = false;
+					}, 3000);
+				});
+
+				$("#export").click(function () {
+					let rows = [];
+					rows.push(["Jupiter", "Mercury", "Mars", "Venus"]);
+					console.log(teams);
+
+					for (let team of teams) {
+						rows.push(team);
+					}
+
+					exportToCsv("teams.csv", rows);
+				});
+			});
+
+			function exportToCsv(filename, rows) {
+				var processRow = function (row) {
+					var finalVal = "";
+					for (var j = 0; j < row.length; j++) {
+						var innerValue = row[j] === null ? "" : row[j].toString();
+						if (row[j] instanceof Date) {
+							innerValue = row[j].toLocaleString();
+						}
+						var result = innerValue.replace(/"/g, '""');
+						if (result.search(/("|,|\n)/g) >= 0) result = '"' + result + '"';
+						if (j > 0) finalVal += ",";
+						finalVal += result;
+					}
+					return finalVal + "\n";
+				};
+
+				var csvFile = "";
+				for (var i = 0; i < rows.length; i++) {
+					csvFile += processRow(rows[i]);
+				}
+
+				var blob = new Blob([csvFile], { type: "text/csv;charset=utf-8;" });
+				if (navigator.msSaveBlob) {
+					// IE 10+
+					navigator.msSaveBlob(blob, filename);
+				} else {
+					var link = document.createElement("a");
+					if (link.download !== undefined) {
+						// feature detection
+						// Browsers that support HTML5 download attribute
+						var url = URL.createObjectURL(blob);
+						link.setAttribute("href", url);
+						link.setAttribute("download", filename);
+						link.style.visibility = "hidden";
+						document.body.appendChild(link);
+						link.click();
+						document.body.removeChild(link);
+					}
+				}
+			}
+		</script>
+	</body>
 </html>

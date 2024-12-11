@@ -243,6 +243,7 @@
 						"Zemmam",
 						"Fardin",
 					];
+					$("#add").prop("disabled", false);
 
 					localStorage.setItem("members", JSON.stringify(members));
 					console.log(members);
@@ -300,6 +301,10 @@
 					teams.push(names);
 
 					members = members.filter((item) => names.indexOf(item) === -1);
+					if (members.length === 0) {
+						$(this).prop("disabled", true);
+						$(this).text("All teams are sorted!");
+					}
 
 					localStorage.setItem("members", JSON.stringify(members));
 					localStorage.setItem("teams", JSON.stringify(teams));
